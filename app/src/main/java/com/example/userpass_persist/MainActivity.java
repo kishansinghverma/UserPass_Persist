@@ -1,5 +1,6 @@
 package com.example.userpass_persist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 String s_pass=sp.getString("pass", "any");
 
                 if(s_user.equals(user.getText().toString()) && s_pass.equals(pass.getText().toString()))
-                    Toast.makeText(MainActivity.this, "Login Succes!!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, Succes.class));
                 else
                     Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
             }
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferences sp=getSharedPreferences("com.example.userpass_persist", MODE_PRIVATE);
         SharedPreferences.Editor ed= sp.edit();
-        ed.putString("user", "kishansinghverma");
+        ed.putString("user", "kishansinghverma@gmail.com");
         ed.putString("pass", "12345");
         ed.apply();
     }
